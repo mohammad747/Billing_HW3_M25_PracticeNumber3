@@ -9,7 +9,7 @@ public class Billing {
     private String total;
     private NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
 
-    public void setPrice(double price) {
+    void setPrice(double price) {
         this.price = price;
     }
 
@@ -17,7 +17,7 @@ public class Billing {
         return price;
     }
 
-    public void setQuantity(int quantity) {
+    void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -33,18 +33,19 @@ public class Billing {
         return coupon;
     }
 
+
     void computeBill(double price){
         price= (price*tax)+price;
         this.total = currencyFormat.format(price);
         System.out.println("Your total is:" + total);
     }
     void computeBill(double price, int quantity){
-        price=  (price*quantity)*tax+(price*quantity);
+        price=  ((price*quantity)*tax)+price*quantity;
         this.total = currencyFormat.format(price);
         System.out.println("Your total is:"+ total);
     }
     void computeBill(double price, int quantity, int coupon){
-        price=  (((price*quantity)-coupon)*tax+((price*quantity)-coupon));
+        price=  ((((price*quantity)-coupon)*tax)+((price*quantity)-coupon));
         this.total = currencyFormat.format(price);
         System.out.println("Your total is:"+ total);
     }
