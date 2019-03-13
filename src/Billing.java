@@ -2,16 +2,18 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class Billing {
-    private NumberFormat price = NumberFormat.getCurrencyInstance(Locale.US);
+    private double price;
     private int quantity;
     private int coupon;
     private static double tax = 0.08;
+    private String total;
+    private NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(Locale.US);
 
-    public void setPrice(NumberFormat price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public NumberFormat getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -31,16 +33,19 @@ public class Billing {
         return coupon;
     }
 
-    void computeBill(int price){
-        price= (int) (price*tax+price);
-        System.out.println("Your total is:" + price);
+    void computeBill(double price){
+        price= (price*tax)+price;
+        this.total = currencyFormat.format(price);
+        System.out.println("Your total is:" + total);
     }
-    void computeBill(int price,int quantity){
-        price= (int) ((price*quantity)*tax+(price*quantity));
-        System.out.println("Your total is:"+ price);
+    void computeBill(double price, int quantity){
+        price=  (price*quantity)*tax+(price*quantity);
+        this.total = currencyFormat.format(price);
+        System.out.println("Your total is:"+ total);
     }
-    void computeBill(int price,int quantity,int coupon){
-        price= (int) (((price*quantity)-coupon)*tax+((price*quantity)-coupon));
-        System.out.println("Your total is:"+ price);
+    void computeBill(double price, int quantity, int coupon){
+        price=  (((price*quantity)-coupon)*tax+((price*quantity)-coupon));
+        this.total = currencyFormat.format(price);
+        System.out.println("Your total is:"+ total);
     }
 }
