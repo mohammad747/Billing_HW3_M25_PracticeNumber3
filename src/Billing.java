@@ -1,6 +1,14 @@
 import java.text.NumberFormat;
 import java.util.Locale;
 
+/*
+practice number 3
+ */
+/*
+Written by: Mohammad Hashemi
+Wednesday,March 13 2019
+چهارشنبه،22اسفند97
+ */
 public class Billing {
     private double price;
     private int quantity;
@@ -33,20 +41,24 @@ public class Billing {
         return coupon;
     }
 
-
-    void computeBill(double price){
-        price= (price*tax)+price;
+    //compute the bill for times we just have price
+    void computeBill(double price) {
+        price = (price * tax) + price;
         this.total = currencyFormat.format(price);
         System.out.println("Your total is:" + total);
     }
-    void computeBill(double price, int quantity){
-        price=  ((price*quantity)*tax)+price*quantity;
+
+    //When we have price and quantity of the books
+    void computeBill(double price, int quantity) {
+        price = ((price * quantity) * tax) + price * quantity;
         this.total = currencyFormat.format(price);
-        System.out.println("Your total is:"+ total);
+        System.out.println("Your total is:" + total);
     }
-    void computeBill(double price, int quantity, int coupon){
-        price=  ((((price*quantity)-coupon)*tax)+((price*quantity)-coupon));
+
+    //When we have price, quantity and coupon
+    void computeBill(double price, int quantity, int coupon) {
+        price = ((((price * quantity) - coupon) * tax) + ((price * quantity) - coupon));
         this.total = currencyFormat.format(price);
-        System.out.println("Your total is:"+ total);
+        System.out.println("Your total is:" + total);
     }
-}
+}//End of class

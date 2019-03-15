@@ -1,6 +1,13 @@
-import java.text.NumberFormat;
 import java.util.Scanner;
 
+/*
+practice number 3
+ */
+/*
+Written by: Mohammad Hashemi
+Wednesday,March 13 2019
+چهارشنبه،22اسفند97
+ */
 public class Main {
     public static void main(String[] args) {
         Billing billing = new Billing();
@@ -8,11 +15,11 @@ public class Main {
 
         //Creating a menu
         System.out.println();
-        System.out.println("Harry potter |"+"pride and prejudice |"+"Ready Player one");
-        System.out.println("  $23.00 "+"    |       $12.00 "+"      |      $9.00");
+        System.out.println("Harry potter |" + "pride and prejudice |" + "Ready Player one");
+        System.out.println("  $23.00 " + "    |       $12.00 " + "      |      $9.00");
         System.out.println("Hi sir, which book do you want?(Choose with number 1,2 or 3)");
         int book = scanner.nextInt();
-        switch (book){
+        switch (book) {
             case 1:
                 billing.setPrice(23.00);
                 break;
@@ -32,21 +39,18 @@ public class Main {
             billing.setCoupon(scanner.nextInt());
         }
 
-        if ( answer.equals("y")){
-            billing.computeBill(billing.getPrice(),billing.getQuantity(),billing.getCoupon());
-        } if (billing.getQuantity()!=1 && answer.equals("n")){
-            billing.computeBill(billing.getPrice(),billing.getQuantity());
-        } if (billing.getQuantity()==1 && answer.equals("n")){
+        if (answer.equals("y")) {
+            billing.computeBill(billing.getPrice(), billing.getQuantity(), billing.getCoupon());
+        }
+        if (billing.getQuantity() != 1 && answer.equals("n")) {
+            billing.computeBill(billing.getPrice(), billing.getQuantity());
+        }
+        if (billing.getQuantity() == 1 && answer.equals("n")) {
             billing.computeBill(billing.getPrice());
         }
 
 
+    }//End of main
 
 
-
-
-    }
-
-
-
-}
+}//End of class
